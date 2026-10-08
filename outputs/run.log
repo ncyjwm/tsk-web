@@ -1,0 +1,14 @@
+02:53:49 [INFO] ======================================================================
+02:53:49 [INFO] ANALISIS KLUSTER UNTUK PEMBINAAN SISTEM KABUR TSK MONOTON
+02:53:49 [INFO] ======================================================================
+02:53:49 [INFO] Imputing 6 missing horsepower values via (cylinders, model_year) group median, falling back to global median.
+02:53:49 [INFO] Data validation passed. Shape: (398, 8)
+02:53:49 [INFO] Split sizes -> train: 278, val: 60, test: 60
+02:53:49 [INFO] Removing 5 outlier row(s) from TRAINING data only (|z| > 3.0).
+02:53:49 [INFO] GROUND-TRUTH BENCHMARK (perfect predictor, i.e. true mpg itself) -> naive_marginal_MI=0.5104  |  pairwise_MI=0.9738 (17/650 pairs). This is the ceiling any honest model faces on the naive metric.
+02:53:49 [INFO] Silhouette scores by k: { 2: 0.4281, 3: 0.3914, 4: 0.3555, 5: 0.3914, 6: 0.3687, 7: 0.3514 }
+02:53:49 [INFO] Selected k = 2 (highest silhouette score).
+02:53:49 [INFO] FCM validity -> Partition Coefficient: 0.7262 (closer to 1 = crisper clusters), Partition Entropy: 0.4357 (closer to 0 = crisper clusters).
+02:53:49 [INFO] FCM validity -> Partition Coefficient: 0.7198 (closer to 1 = crisper clusters), Partition Entropy: 0.4445 (closer to 0 = crisper clusters).
+02:53:49 [INFO] Firing-strength diagnostic (training): min=0.0334, median=0.6031, %samples with near-zero total firing=0.5%
+02:53:49 [INFO] Warm-start (weighted ridge, sign-clipped) computed for all rules.

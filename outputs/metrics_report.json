@@ -1,0 +1,50 @@
+{
+  "ground_truth_benchmark_test": {
+    "naive_marginal_mi": 0.5104,
+    "pairwise_mi": 0.9738
+  },
+  "cluster_k": 2,
+  "silhouette_scores": {
+    "2": 0.42810894312199643,
+    "3": 0.39144037091605133,
+    "4": 0.35549360602101626,
+    "5": 0.39135206693044755,
+    "6": 0.36869470609882216,
+    "7": 0.3514291441004087
+  },
+  "partition_coefficient": 0.726190297466376,
+  "partition_entropy": 0.4357313393569916,
+  "cv_summary": {
+    "rmse_scores": [
+      3.1486720852160333,
+      3.236798946698024,
+      2.6206790337510384,
+      2.849957570334123,
+      3.0994390958355984
+    ],
+    "rmse_mean": 2.991109346366964,
+    "rmse_std": 0.22541835390506723,
+    "r2_mean": 0.8399780325461188,
+    "r2_std": 0.0101313974410621,
+    "naive_marginal_mi_mean": 0.5455783383760364,
+    "pairwise_mi_before_envelope_mean": 1.0,
+    "pairwise_mi_after_envelope_mean": 1.0
+  },
+  "val": {
+    "rmse": 4.2357,
+    "mae": 2.8145,
+    "r2": 0.7814
+  },
+  "test": {
+    "rmse": 3.3659,
+    "mae": 2.699,
+    "r2": 0.7555,
+    "mape_pct": 12.9396,
+    "naive_marginal_monotonicity_index": 0.5104,
+    "pairwise_monotonicity_index_stage1_only": 1.0,
+    "pairwise_monotonicity_index_final": 1.0,
+    "pairwise_violations_stage1_only": "0/650",
+    "pairwise_violations_final": "0/650"
+  },
+  "stage2_envelope_max_prediction_change_normalized": 0.0
+}
