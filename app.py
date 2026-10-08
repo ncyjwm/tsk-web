@@ -10,7 +10,39 @@ import monotonic_tsk_fis  # required so pickle can find the classes
 # ----------------------------------------------------------------------------
 # Page setup
 # ----------------------------------------------------------------------------
-st.set_page_config(page_title="Monotonic TSK FIS", page_icon="🚗", layout="wide")
+st.set_page_config(page_title="Monotonic TSK FIS", layout="wide")
+
+# Light-touch styling on top of the theme in .streamlit/config.toml.
+# These selectors target Streamlit's internals, so if a future Streamlit
+# version changes them, the app still works and only the polish is lost.
+st.markdown(
+    """
+    <style>
+    .block-container { max-width: 1080px; padding-top: 3rem; padding-bottom: 4rem; }
+    h1 { font-weight: 500; letter-spacing: -0.01em; margin-bottom: 0.1rem; }
+    h2, h3 { font-weight: 500; }
+    [data-testid="stCaptionContainer"] { color: #6B7280; }
+    [data-testid="stMetric"] {
+        background: #FFFFFF; border: 1px solid #D9D6CF;
+        border-radius: 6px; padding: 14px 18px;
+    }
+    [data-testid="stMetricLabel"] p {
+        text-transform: uppercase; letter-spacing: 0.06em;
+        font-size: 0.72rem; color: #6B7280;
+    }
+    [data-testid="stMetricValue"] {
+        font-family: Georgia, "Times New Roman", serif; font-weight: 500;
+    }
+    button[data-baseweb="tab"] { letter-spacing: 0.02em; }
+    [data-testid="stSidebar"] { border-right: 1px solid #D9D6CF; }
+    .stButton > button[kind="primary"] {
+        letter-spacing: 0.04em; padding: 0.55rem 1.8rem; border-radius: 4px;
+    }
+    footer { visibility: hidden; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 APP_TITLE = "Monotonic TSK Fuzzy System"
 APP_SUBTITLE = "Fuel efficiency (MPG) prediction with a monotonicity-constrained fuzzy model"
@@ -120,8 +152,9 @@ with st.sidebar:
 # ----------------------------------------------------------------------------
 # Main page
 # ----------------------------------------------------------------------------
-st.title(f"🚗 {APP_TITLE}")
+st.title(APP_TITLE)
 st.caption(APP_SUBTITLE)
+st.divider()
 
 tab_predict, tab_mono, tab_results, tab_about = st.tabs(
     ["Predict", "Monotonic behaviour", "Model results", "How it works"]
@@ -194,9 +227,9 @@ with tab_mono:
     ok = bool(np.all(np.diff(ys) * sign >= -1e-9)) if sign else True
     direction = ("decrease (or stay flat)" if sign < 0 else "increase (or stay flat)")
     if sign:
-        msg = (f"Constraint: predicted MPG should only {direction} as "
+        msg = (f"Predicted MPG should only {direction} as "
                f"**{FEATURE_LABELS[feat].split(' (')[0].lower()}** increases.")
-        (st.success if ok else st.error)(("✓ " if ok else "✗ ") + msg)
+        (st.success if ok else st.error)(("Constraint satisfied. " if ok else "Constraint violated. ") + msg)
 
 # ---------------------------- Results ---------------------------------------
 with tab_results:
